@@ -64,6 +64,11 @@ class PolydRequestGenerator(object):
             'url': f'{self.base_uri}/bounties/{bounty_guid}/votes/{vote_id}'
         }, result_parser=resources.Vote)
 
+    def get_wallet(self, wallet):
+        return PolydRequest(self.api, {
+            'method': 'GET',
+            'url': f'{self.base_uri}/wallets/{wallet}/'
+        }, result_parser=resources.Wallet)
 
 class PolydFastRequestGenerator(PolydRequestGenerator):
     BASE = '/v1'

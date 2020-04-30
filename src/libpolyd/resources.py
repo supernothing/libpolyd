@@ -44,3 +44,7 @@ class Assertion(BasePolydJSONType):
 
 class Vote(BasePolydJSONType):
     pass
+
+
+class Wallet(BasePolydJSONType):
+    pass

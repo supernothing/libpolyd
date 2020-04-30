@@ -35,3 +35,7 @@ class PolydAPI(object):
     def get_vote(self, bounty_guid, vote_id):
         logger.info('Looking up vote %s for bounty %s', vote_id, bounty_guid)
         return self.generator.get_vote(bounty_guid, vote_id).execute().result
+
+    def get_wallet(self, address):
+        logger.info('Getting balance for %s', address)
+        return self.generator.get_wallet(address).execute().result
