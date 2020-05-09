@@ -18,6 +18,7 @@ class Transaction(object):
         }
         # very confused where this data goes, but trying this for now
         result.update(self.content)
+        result['metadata'] = {}
         return result
 
     def build_message(self, pubkey):
