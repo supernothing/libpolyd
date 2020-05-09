@@ -70,5 +70,15 @@ class PolydRequestGenerator(object):
             'url': f'{self.base_uri}/wallets/{wallet}/'
         }, result_parser=resources.Wallet)
 
+    def post_bounty(self, bounty):
+        raise NotImplemented()
+
+    def post_assertion(self, signed_assertion):
+        pass
+
+    def post_vote(self, assertion):
+        raise NotImplemented()
+
+
 class PolydFastRequestGenerator(PolydRequestGenerator):
     BASE = '/v1'

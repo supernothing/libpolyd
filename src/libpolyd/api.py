@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 class PolydAPI(object):
-    def __init__(self, key, uri=None, timeout=None):
+    def __init__(self, key, uri=None, timeout=None, wallet=None):
         logger.info('Creating PolydAPI instance: api_key: %s, api_uri: %s', key, uri)
         self.uri = uri or const.DEFAULT_API_URI
         self.timeout = timeout or const.DEFAULT_HTTP_TIMEOUT
@@ -39,3 +39,7 @@ class PolydAPI(object):
     def get_wallet(self, address):
         logger.info('Getting balance for %s', address)
         return self.generator.get_wallet(address).execute().result
+
+    def post_assertion(self, signed_assertion):
+        logger.info('Posting tx: %s', signed_assertion)
+        return self.generator.post_assertion(signed_assertion)
