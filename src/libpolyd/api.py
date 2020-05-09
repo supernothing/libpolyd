@@ -40,6 +40,9 @@ class PolydAPI(object):
         logger.info('Getting balance for %s', address)
         return self.generator.get_wallet(address).execute().result
 
-    def post_assertion(self, signed_assertion):
+    def post_assertion(self, bounty_guid, signed_assertion):
         logger.info('Posting tx: %s', signed_assertion)
-        return self.generator.post_assertion(signed_assertion)
+        print(signed_assertion)
+        result = self.generator.post_assertion(bounty_guid, signed_assertion).execute().result
+        print(result)
+        return result

@@ -12,6 +12,7 @@ class Transaction(object):
         key = PrivateKey(key_bytes)
         content = self.build_message(key.public_key)
         return {
+            'author': key.public_key.to_checksum_address(),
             'raw_transaction': content,
             'signature': key.sign_msg_hash(Web3.keccak(text=content)),
         }
@@ -20,6 +21,7 @@ class Transaction(object):
         body = {
             'name': 'libpolyd',
             'from': pubkey.to_checksum_address(),
+            'author': pubkey.to_checksum_address(),
             'data': self.content
         }
 
@@ -34,5 +36,5 @@ class Assertion(Transaction):
             'guid': guid,
             'verdict': verdict,
             'bid': bid,
-            'metadata': metadata
+            'metadata': metadata,
         }

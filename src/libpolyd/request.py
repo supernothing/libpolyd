@@ -73,8 +73,12 @@ class PolydRequestGenerator(object):
     def post_bounty(self, bounty):
         raise NotImplemented()
 
-    def post_assertion(self, signed_assertion):
-        pass
+    def post_assertion(self, bounty_guid, signed_assertion):
+        return PolydRequest(self.api, {
+            'method': 'POST',
+            'url': f'{self.base_uri}/bounties/{bounty_guid}/assertions',
+            'data': signed_assertion,
+        }, result_parser=resources.Assertion)
 
     def post_vote(self, assertion):
         raise NotImplemented()
