@@ -25,6 +25,9 @@ class Transaction(object):
             'data': self.content
         }
 
+        # very confused where this data goes, but trying this for now
+        body.update(self.content)
+
         return json.dumps(body)
 
 
