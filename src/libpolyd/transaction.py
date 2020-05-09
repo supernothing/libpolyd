@@ -11,11 +11,14 @@ class Transaction(object):
     def sign(self, key_bytes):
         key = PrivateKey(key_bytes)
         content = self.build_message(key.public_key)
-        return {
+        result = {
             'author': key.public_key.to_checksum_address(),
             'raw_transaction': content,
             'signature': key.sign_msg_hash(Web3.keccak(text=content)),
         }
+        # very confused where this data goes, but trying this for now
+        result.update(content)
+        return result
 
     def build_message(self, pubkey):
         body = {
@@ -24,9 +27,6 @@ class Transaction(object):
             'author': pubkey.to_checksum_address(),
             'data': self.content
         }
-
-        # very confused where this data goes, but trying this for now
-        body.update(self.content)
 
         return json.dumps(body)
 
