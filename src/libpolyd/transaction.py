@@ -32,7 +32,7 @@ class Transaction(object):
 
 
 class Assertion(Transaction):
-    def __init__(self, guid, verdict, bid, metadata):
+    def __init__(self, guid, verdict, bid, metadata, mask=True):
         super().__init__()
 
         self.content = {
@@ -40,4 +40,5 @@ class Assertion(Transaction):
             'verdict': verdict,
             'bid': bid,
             'metadata': metadata,
+            'mask': mask
         }
