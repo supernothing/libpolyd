@@ -42,7 +42,5 @@ class PolydAPI(object):
 
     def post_assertion(self, bounty_guid, signed_assertion):
         logger.info('Posting tx: %s', signed_assertion)
-        print(signed_assertion)
         result = self.generator.post_assertion(bounty_guid, signed_assertion).execute().result
-        print(result)
         return result
