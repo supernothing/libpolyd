@@ -17,7 +17,7 @@ class Transaction(object):
             'signature': key.sign_msg_hash(Web3.keccak(text=content)),
         }
         # very confused where this data goes, but trying this for now
-        result.update(content)
+        result.update(self.content)
         return result
 
     def build_message(self, pubkey):
