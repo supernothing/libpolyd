@@ -2,7 +2,7 @@ import platform
 
 from . import _version
 
-DEFAULT_API_URI = 'https://nu.k.polyswarm.network/v1'
+DEFAULT_API_URI = 'https://rho.k.polyswarm.network/v1'
 DEFAULT_HTTP_TIMEOUT = 30
 DEFAULT_RETRIES = 0
 DEFAULT_BACKOFF = 1
